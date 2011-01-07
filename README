@@ -1,0 +1,56 @@
+= EnvJasmine: Jasmine test runner for EnvJS.
+
+EnvJasmine allows you to run headless JavaScript tests.
+
+== Creating New Specs
+
+Add your Jasmine Spec files to the specs directory to be run.
+
+IMPORTANT: Make sure to load the file you are planning to test as the first line of the spec file using the load("file.js"); function.
+
+== Running JavaScript tests
+
+To run the JavaScript test suite, execute the following:
+
+    bin/run_all_tests.sh
+
+To run an individual spec file, execute the following:
+
+    bin/run_test.sh specs/[your spec file].js
+
+== Adding Dependencies
+
+Sometimes you will have libraries that you need to load for any of your JavaScript files to work. To make sure these are loaded before your tests are run, include them in the include/dependencies.js file using the load("file.js"); function.
+
+----
+
+Based on info from:
+http://agile.dzone.com/news/javascript-bdd-jasmine-without
+http://www.mozilla.org/rhino/
+http://www.envjs.com/
+http://pivotal.github.com/jasmine/
+https://github.com/velesin/jasmine-jquery
+
+----
+
+Originally created by Jeff Avallone and Trevor Lalish-Menagh
+
+Copyright (c) 2010 Jeff Avallone and Trevor Lalish-Menagh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
