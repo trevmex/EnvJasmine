@@ -1,7 +1,7 @@
 // Load the file to test here.
 //
 // Example:
-//load("../../../../main/webapp/js/demo.js");
+// load(EnvJasmine.jsDirectory + "demo.js");
 
 describe("Demo", function () {
     it("asserts that one plus one equals two", function () {
