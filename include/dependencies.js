@@ -6,5 +6,5 @@
 // EnvJasmine.jsDirectory = "../../../../main/webapp/js/";
 
 // Examples
-// load(EnvJasmine.jsDirectory + "vendor/jquery-1.4.4.js");
+load("../include/jquery-1.4.4.js");
 // load(EnvJasmine.jsDirectory + "vendor/jquery.json-2.2.min.js");
