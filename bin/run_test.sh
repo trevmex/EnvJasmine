@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 cd "`dirname \"$0\"`"
-java -Duser.timezone="US/Eastern" -jar ../lib/rhino/js.jar ../lib/envjasmine.js ../$1
+PWD=$(pwd)
+java -Duser.timezone="US/Eastern" -jar "$PWD/../lib/rhino/js.jar" "$PWD/../lib/envjasmine.js" "$PWD/.." "$PWD/../$1"

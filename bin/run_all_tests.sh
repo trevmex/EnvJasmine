@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 cd "`dirname \"$0\"`"
-java -Duser.timezone="US/Eastern" -jar ../lib/rhino/js.jar ../lib/envjasmine.js `find ../specs -name *.spec.js`
+PWD=$(pwd)
+java -Duser.timezone="US/Eastern" -jar "$PWD/../lib/rhino/js.jar" "$PWD/../lib/envjasmine.js" "$PWD/.." `find "$PWD/../specs" -name *.spec.js`

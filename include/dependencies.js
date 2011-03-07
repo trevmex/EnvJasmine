@@ -3,8 +3,7 @@
 // NOTE: Load order does matter.
 
 // This is your main JavaScript directory in your project.
-// EnvJasmine.jsDirectory = "../../../../main/webapp/js/";
+EnvJasmine.jsDir = EnvJasmine.rootDir + "/samples/"; // TODO: Change this to your project's main js directory.
 
-// Examples
-load("../include/jquery-1.4.4.js");
-// load(EnvJasmine.jsDirectory + "vendor/jquery.json-2.2.min.js");
+load(EnvJasmine.includeDir + "jquery-1.4.4.js"); // for example, load jquery.
+// TODO: Add your own
