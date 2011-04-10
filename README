@@ -25,7 +25,7 @@ Sometimes you will have libraries that you need to load for any of your JavaScri
 ----
 
 Based on info from:
-http://agile.dzone.com/news/javascript-bdd-jasmine-without
+http://www.build-doctor.com/2010/12/08/javascript-bdd-jasmine/
 http://www.mozilla.org/rhino/
 http://www.envjs.com/
 http://pivotal.github.com/jasmine/
