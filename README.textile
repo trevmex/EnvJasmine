@@ -24,11 +24,11 @@ Sometimes you will have libraries that you need to load for any of your JavaScri
 
 h2. Based on info from:
 
-    * http://www.build-doctor.com/2010/12/08/javascript-bdd-jasmine/
-    * http://www.mozilla.org/rhino/
-    * http://www.envjs.com/
-    * http://pivotal.github.com/jasmine/
-    * https://github.com/velesin/jasmine-jquery
+    * JavaScript BDD, with Jasmine, without a browser:"http://www.build-doctor.com/2010/12/08/javascript-bdd-jasmine/"
+    * Rhino:"http://www.mozilla.org/rhino/"
+    * EnvJS:"http://www.envjs.com/"
+    * Jasmine:"http://pivotal.github.com/jasmine/"
+    * Jasmine Jquery:"https://github.com/velesin/jasmine-jquery"
 
 
 Originally created by Jeff Avallone and Trevor Lalish-Menagh
