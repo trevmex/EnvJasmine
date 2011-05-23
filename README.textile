@@ -6,7 +6,7 @@ h2. Creating New Specs
 
 Add your Jasmine Spec files to the specs directory to be run.
 
-IMPORTANT: Make sure to load the file you are planning to test as the first line of the spec file using the load("file.js"); function.
+IMPORTANT: Make sure to load the file you are planning to test as the first line of the spec file using the @load("file.js");@ function.
 
 h2. Running JavaScript tests
 
@@ -20,7 +20,7 @@ bc. bin/run_test.sh specs/[your spec file].js
 
 h2. Adding Dependencies
 
-Sometimes you will have libraries that you need to load for any of your JavaScript files to work. To make sure these are loaded before your tests are run, include them in the include/dependencies.js file using the load("file.js"); function.
+Sometimes you will have libraries that you need to load for any of your JavaScript files to work. To make sure these are loaded before your tests are run, include them in the @include/dependencies.js@ file using the @load("file.js");@ function.
 
 h2. Based on info from:
 
@@ -30,10 +30,8 @@ h2. Based on info from:
     * "Jasmine":http://pivotal.github.com/jasmine/
     * "Jasmine Jquery":https://github.com/velesin/jasmine-jquery
 
+Originally created by Jeff Avallone and Trevor Lalish-Menagh. See "LICENSE":https://github.com/trevmex/EnvJasmine/blob/master/LICENSE for lincensing information.
 
-Originally created by Jeff Avallone and Trevor Lalish-Menagh
-See LICENSE for lincensing information.
+See "CHANGELOG":https://github.com/trevmex/EnvJasmine for changelog information.
 
-See CHANGELOG for changelog information.
-
-Current version is found in the VERSION file.
+Current version is found in the "VERSION":https://github.com/trevmex/EnvJasmine/blob/master/VERSION file.
