@@ -2,4 +2,4 @@
 
 cd "`dirname \"$0\"`"
 PWD=$(pwd)
-java -Duser.timezone="US/Eastern" -jar "$PWD/../lib/rhino/js.jar" "$PWD/../lib/envjasmine.js" "$PWD/.." `find "$PWD/../specs" -name *.spec.js`
+java -Duser.timezone="US/Eastern" -jar "$PWD/../lib/rhino/js.jar" "$PWD/../lib/envjasmine.js" "UNIX" "$PWD/.." `find "$PWD/../specs" -name *.spec.js`
