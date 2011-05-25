@@ -38,77 +38,77 @@ Current version is found in the "VERSION":https://github.com/trevmex/EnvJasmine/
 
 h2. A Basic Tutorial
 
-How to set up EnvJasmine within a basic web project.
+*How to set up EnvJasmine within a basic web project.*
 
-# Create a directory in which to house your project. Let's call this @demo@. After creating the directory, enter it:
+Create a directory in which to house your project. Let's call this @demo@. After creating the directory, enter it:
 
 bc. mkdir demo
-    cd demo
+cd demo
 
-# Create a @js@ directory inside @demo@ to house JavaScript files:
+Create a @js@ directory inside @demo@ to house JavaScript files:
     
-    bc. mkdir js
+bc. mkdir js
 
-# Create a directory in @demo@ to house your tests. As is often customary, let's call this directory @tests@:
+Create a directory in @demo@ to house your tests. As is often customary, let's call this directory @tests@:
 
-    bc. mkdir tests
+bc. mkdir tests
 
-# Clone EnvJasmine into your @tests@ directory:
+Clone EnvJasmine into your @tests@ directory:
 
-    bc. git clone https://github.com/trevmex/EnvJasmine.git tests
+bc. git clone https://github.com/trevmex/EnvJasmine.git tests
 
-# For the purposes of this example, let's assume we need to create some JavaScript that adds two numbers and returns their sum. Let's create a JavaScript file to house this code:
+For the purposes of this example, let's assume we need to create some JavaScript that adds two numbers and returns their sum. Let's create a JavaScript file to house this code:
 
-    bc. touch js/add-numbers.js
+bc. touch js/add-numbers.js
 
-# Create an EnvJasmine spec file, inside of which we'll write a test against the functionality of @js/add-numbers.js@:
+Create an EnvJasmine spec file, inside of which we'll write a test against the functionality of @js/add-numbers.js@:
 
-    bc. touch tests/EnvJasmine/specs/add-numbers.spec.js
+bc. touch tests/EnvJasmine/specs/add-numbers.spec.js
 
-# Inside @tests/EnvJasmine/specs/add-numbers.spec.js@, let's load the file containing the code we're testing, in this case @js/add-numbers.js@. This can be done by adding the following line:
+Inside @tests/EnvJasmine/specs/add-numbers.spec.js@, let's load the file containing the code we're testing, in this case @js/add-numbers.js@. This can be done by adding the following line:
 
-    bc. load(EnvJasmine.jsDirectory + "alert-user.js");
+bc. load(EnvJasmine.jsDirectory + "alert-user.js");
 
-# But what's this @EnvJasmine.jsDirectory@ business? It's a configuratioon variable used to define the primary directory housing your JavaScript. To define this variable, open @tests/EnvJasmine/include/dependencies.js@ and change line 6 to read:
+But what's this @EnvJasmine.jsDirectory@ business? It's a configuratioon variable used to define the primary directory housing your JavaScript. To define this variable, open @tests/EnvJasmine/include/dependencies.js@ and change line 6 to read:
     
-    bc. EnvJasmine.jsDirectory = workingDir + "../js/";
+bc. EnvJasmine.jsDirectory = workingDir + "../js/";
 
-# Create an EnvJasmine spec file inside of which we'l write a test against the intended functionality of @js/add-numbers.js@:
+Create an EnvJasmine spec file inside of which we'l write a test against the intended functionality of @js/add-numbers.js@:
 
-    bc. touch tests/EnvJasmine/specs/add-numbers.spec.js
+bc. touch tests/EnvJasmine/specs/add-numbers.spec.js
 
-# In @add-numbers.spec.js@, sketch out the basic framework for a unit test against the functionality within @js/add-numbers.js@. Let's assume this file contains a single function, @addNumbers()@:
+In @add-numbers.spec.js@, sketch out the basic framework for a unit test against the functionality within @js/add-numbers.js@. Let's assume this file contains a single function, @addNumbers()@:
 
-    bc. describe("addNumbers", function () {
-            it("returns the sum of the two integers it's passed", function() {
-                // test specifics will go here
-            });
-        });
+bc. describe("addNumbers", function () {
+    it("returns the sum of the two integers it's passed", function() {
+        // test specifics will go here
+    });
+});
 
-# Utilizing Jasmine "syntax":https://github.com/pivotal/jasmine/wiki and "matchers":https://github.com/pivotal/jasmine/wiki/Matchers, write the code testing the expected behavior of @addNumbers()@:
+Utilizing Jasmine "syntax":https://github.com/pivotal/jasmine/wiki and "matchers":https://github.com/pivotal/jasmine/wiki/Matchers, write the code testing the expected behavior of @addNumbers()@:
 
-    bc. describe("addNumbers", function () {
-            it("returns the sum of the two integers it's passed", function() {
-                expect(addNumbers(1, 2)).toReturn(3);
-            });
-        });
+bc. describe("addNumbers", function () {
+    it("returns the sum of the two integers it's passed", function() {
+        expect(addNumbers(1, 2)).toReturn(3);
+    });
+});
 
-# Run the test:
+Run the test:
     
-    bc. ./tests/EnvJasmine/bin/run_test.sh tests/EnvJasmine/specs/add-numbers.spec.js
+bc. ./tests/EnvJasmine/bin/run_test.sh tests/EnvJasmine/specs/add-numbers.spec.js
 
-    Note that the above command will run just the @add-numbers.spec.js@ code. To run all tests:
+Note that the above command will run just the @add-numbers.spec.js@ code. To run all tests:
 
-    bc. ./tests/EnvJasmine/bin/run_all_tests.sh
+bc. ./tests/EnvJasmine/bin/run_all_tests.sh
 
-    Also note that at this stage, the test should fail as we have not yet written the @addNumbers()@ function.
+Also note that at this stage, the test should fail as we have not yet written the @addNumbers()@ function.
 
-# Write just enough code in @js/add-numbers.js@ to make the test pass:
+Write just enough code in @js/add-numbers.js@ to make the test pass:
 
-    bc. function addNumbers(a, b) {
-            return a + b;
-        }
+bc. function addNumbers(a, b) {
+    return a + b;
+}
 
-# Run the test again and confirm that it passes:
+Run the test again and confirm that it passes:
 
-    bc. ./tests/EnvJasmine/bin/run_test.sh tests/EnvJasmine/specs/add-numbers.spec.js
+bc. ./tests/EnvJasmine/bin/run_test.sh tests/EnvJasmine/specs/add-numbers.spec.js
