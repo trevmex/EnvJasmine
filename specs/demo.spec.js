@@ -1,10 +1,10 @@
 // Load the file to test here.
 //
 // Example:
-load([EnvJasmine.jsDir, "demo.js"].join(EnvJasmine.SEPARATOR));
+EnvJasmine.load(EnvJasmine.jsDir + "demo.js");
 
 // Load mocks for this spec
-load([EnvJasmine.mocksDir, "demo.mock.js"].join(EnvJasmine.SEPARATOR));
+EnvJasmine.load(EnvJasmine.mocksDir + "demo.mock.js");
 
 describe("Demo", function () {
     it("asserts that one plus one equals two", function () {

@@ -1,7 +1,7 @@
 // Load the file to test here.
 //
 // Example:
-load([EnvJasmine.jsDir, "ajaxDemo.js"].join(EnvJasmine.SEPARATOR));
+EnvJasmine.load(EnvJasmine.jsDir + "ajaxDemo.js");
 
 // This is the test code.
 describe("AjaxDemo", function () {
