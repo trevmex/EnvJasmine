@@ -42,8 +42,8 @@ How to set up EnvJasmine within a basic web project.
 
 # Create a directory in which to house your project. Let's call this @demo@. After creating the directory, enter it:
 
-    bc. mkdir demo
-        cd demo
+bc. mkdir demo
+    cd demo
 
 # Create a @js@ directory inside @demo@ to house JavaScript files:
     
