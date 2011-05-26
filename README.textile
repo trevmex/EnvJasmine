@@ -87,7 +87,7 @@ h3. 8. Configure your EnvJasmine.
 
 But what's this @EnvJasmine.jsDirectory@ business? It's a configuratioon variable used to define the primary directory housing your JavaScript. To define this variable, open @tests/EnvJasmine/include/dependencies.js@ and change line 6 to read:
     
-bc. EnvJasmine.jsDirectory = workingDir + "../js/";
+bc. EnvJasmine.jsDirectory = EnvJasmine.rootDir + "../js/";
 
 h3. 9. Write the framework for a basic test.
 
