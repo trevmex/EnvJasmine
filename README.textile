@@ -65,6 +65,10 @@ Clone EnvJasmine into your @tests@ directory:
 
 bc. git clone https://github.com/trevmex/EnvJasmine.git tests
 
+or
+
+bc. git clone git://github.com/trevmex/EnvJasmine.git tests
+
 h3. 5. Create a JavaScript file.
 
 For the purposes of this example, let's assume we need to create some JavaScript that adds two numbers and returns their sum. Let's create a JavaScript file to house this code:
@@ -81,13 +85,15 @@ h3. 7. Load the necessary JavaScript into the test spec.
 
 Inside @tests/EnvJasmine/specs/add-numbers.spec.js@, let's load the file containing the code we're testing, in this case @js/add-numbers.js@. This can be done by adding the following line:
 
-bc. EnvJasmine.load(EnvJasmine.jsDirectory + "alert-user.js");
+bc. EnvJasmine.load(EnvJasmine.jsDirectory + "add-numbers.js");
 
 h3. 8. Configure your EnvJasmine.
 
 But what's this @EnvJasmine.jsDirectory@ business? It's a configuratioon variable used to define the primary directory housing your JavaScript. To define this variable, open @tests/EnvJasmine/include/dependencies.js@ and change line 6 to read:
     
-bc. EnvJasmine.jsDirectory = EnvJasmine.rootDir + "../js/";
+bc. EnvJasmine.jsDirectory = EnvJasmine.rootDir + "/../../js/";
+
+Please note the need for the leading slash.
 
 h3. 9. Write the framework for a basic test.
 
@@ -105,7 +111,7 @@ Utilizing Jasmine "syntax":https://github.com/pivotal/jasmine/wiki and "matchers
 
 bc. describe("addNumbers", function () {
     it("returns the sum of the two integers it's passed", function() {
-        expect(addNumbers(1, 2)).toReturn(3);
+        expect(addNumbers(1, 2)).toEqual(3);
     });
 });
 
