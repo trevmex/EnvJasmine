@@ -50,7 +50,7 @@ cd demo
 h3. 2. Create a JavaScript directory.
 
 Create a @js@ directory inside @demo@ to house JavaScript files:
-    
+
 bc. mkdir js
 
 h3. 3. Create a tests directory.
@@ -85,13 +85,13 @@ h3. 7. Load the necessary JavaScript into the test spec.
 
 Inside @tests/EnvJasmine/specs/add-numbers.spec.js@, let's load the file containing the code we're testing, in this case @js/add-numbers.js@. This can be done by adding the following line:
 
-bc. EnvJasmine.load(EnvJasmine.jsDirectory + "add-numbers.js");
+bc. EnvJasmine.load(EnvJasmine.jsDir + "add-numbers.js");
 
 h3. 8. Configure your EnvJasmine.
 
-But what's this @EnvJasmine.jsDirectory@ business? It's a configuratioon variable used to define the primary directory housing your JavaScript. To define this variable, open @tests/EnvJasmine/include/dependencies.js@ and change line 6 to read:
-    
-bc. EnvJasmine.jsDirectory = EnvJasmine.rootDir + "/../../js/";
+But what's this @EnvJasmine.jsDirectory@ business? It's a configuration variable used to define the primary directory housing your JavaScript. To define this variable, open @tests/EnvJasmine/include/dependencies.js@ and change line 6 to read:
+
+bc. EnvJasmine.jsDir = EnvJasmine.rootDir + "/../../js/";
 
 Please note the need for the leading slash.
 
@@ -118,7 +118,7 @@ bc. describe("addNumbers", function () {
 h3. 11. Run the test.
 
 Run the test from the command line:
-    
+
 bc. ./tests/EnvJasmine/bin/run_test.sh tests/EnvJasmine/specs/add-numbers.spec.js
 
 Note that the above command will run just the @add-numbers.spec.js@ code. To run all tests:
