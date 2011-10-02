@@ -5,5 +5,5 @@
 // This is your main JavaScript directory in your project.
 EnvJasmine.jsDir = EnvJasmine.rootDir + "/samples/"; // TODO: Change this to your project's main js directory.
 
-EnvJasmine.load(EnvJasmine.includeDir + "jquery-1.4.4.js"); // for example, load jquery.
+EnvJasmine.loadGlobal(EnvJasmine.includeDir + "jquery-1.4.4.js"); // for example, load jquery.
 // TODO: Add your own
