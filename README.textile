@@ -6,7 +6,7 @@ h2. Creating New Specs
 
 Add your Jasmine Spec files to the specs directory to be run.
 
-IMPORTANT: Make sure to load the file you are planning to test as the first line of the spec file using the @load("file.js");@ function.
+IMPORTANT: Make sure to load the file you are planning to test as the first line of the spec file using the @EnvJasmine.load("file.js");@ function.
 
 h2. Running JavaScript tests
 
@@ -18,9 +18,17 @@ To run an individual spec file, execute the following:
 
 bc. bin/run_test.sh specs/[your spec file].js
 
+In Windows you do the same by running:
+
+bc. bin/run_all_tests.bat
+
+bc. bin/run_test.bat specs/[your spec file].js
+
 h2. Adding Dependencies
 
-Sometimes you will have libraries that you need to load for any of your JavaScript files to work. To make sure these are loaded before your tests are run, include them in the @include/dependencies.js@ file using the @load("file.js");@ function.
+Sometimes you will have libraries that you need to load for any of your JavaScript files to work. To make sure these are loaded before your tests are run, include them in the @include/dependencies.js@ file using the @EnvJasmine.load("file.js");@ function.
+
+You can alsodefine a custom config file location to replace @include/dependencies.js@ by calling run_test or run_all_tests with the @--configFile=<config js file>@ option.
 
 h2. Based on info from:
 
@@ -89,9 +97,9 @@ bc. EnvJasmine.load(EnvJasmine.jsDir + "add-numbers.js");
 
 h3. 8. Configure your EnvJasmine.
 
-But what's this @EnvJasmine.jsDirectory@ business? It's a configuration variable used to define the primary directory housing your JavaScript. To define this variable, open @tests/EnvJasmine/include/dependencies.js@ and change line 6 to read:
+But what's this @EnvJasmine.jsDir@ business? It's a configuration variable used to define the primary directory housing your JavaScript. To define this variable, open @tests/EnvJasmine/include/dependencies.js@ and change line 6 to read:
 
-bc. EnvJasmine.jsDir = EnvJasmine.rootDir + "/../../js/";
+bc. EnvJasmine.jsDir = EnvJasmine.rootDir + "/../../js";
 
 Please note the need for the leading slash.
 
@@ -140,3 +148,7 @@ h3. 13. Run the test again.
 Run the test again and confirm that it passes:
 
 bc. ./tests/EnvJasmine/bin/run_test.sh tests/EnvJasmine/specs/add-numbers.spec.js
+
+That's it! For more help on Jasmine docs at https://github.com/pivotal/jasmine/wiki
+
+Please contact Trevor Lalish-Menagh through github (https://github.com/trevmex) with any defects or feature requests!

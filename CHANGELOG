@@ -1,3 +1,5 @@
+Version 1.6: Made the output more like RSpec. (12/02/2011)
+
 Version 1.5: Reengineered EnvJasmine to make each script to run withit its own context. This prevents conflicts in scripts modifying global objects, although your dependencies are still loaded globally.
 
 Version 1.4: Reengineered system to better integrate with maven (03/07/2011)
