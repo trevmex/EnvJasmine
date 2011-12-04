@@ -93,7 +93,7 @@ h3. 7. Load the necessary JavaScript into the test spec.
 
 Inside @tests/EnvJasmine/specs/add-numbers.spec.js@, let's load the file containing the code we're testing, in this case @js/add-numbers.js@. This can be done by adding the following line:
 
-bc. EnvJasmine.load(EnvJasmine.jsDir + "add-numbers.js");
+bc. EnvJasmine.load(EnvJasmine.jsDir + "/add-numbers.js");
 
 h3. 8. Configure your EnvJasmine.
 
