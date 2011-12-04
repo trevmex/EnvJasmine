@@ -127,7 +127,7 @@ h3. 11. Run the test.
 
 Run the test from the command line:
 
-bc. ./tests/EnvJasmine/bin/run_test.sh tests/EnvJasmine/specs/add-numbers.spec.js
+bc. ./tests/EnvJasmine/bin/run_test.sh specs/add-numbers.spec.js
 
 Note that the above command will run just the @add-numbers.spec.js@ code. To run all tests:
 
@@ -147,7 +147,7 @@ h3. 13. Run the test again.
 
 Run the test again and confirm that it passes:
 
-bc. ./tests/EnvJasmine/bin/run_test.sh tests/EnvJasmine/specs/add-numbers.spec.js
+bc. ./tests/EnvJasmine/bin/run_test.sh specs/add-numbers.spec.js
 
 That's it! For more help on Jasmine docs at https://github.com/pivotal/jasmine/wiki
 
