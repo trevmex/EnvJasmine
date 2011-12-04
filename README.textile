@@ -97,7 +97,7 @@ bc. EnvJasmine.load(EnvJasmine.jsDir + "add-numbers.js");
 
 h3. 8. Configure your EnvJasmine.
 
-But what's this @EnvJasmine.jsDir@ business? It's a configuration variable used to define the primary directory housing your JavaScript. To define this variable, open @tests/EnvJasmine/include/dependencies.js@ and change line 6 to read:
+But what's this @EnvJasmine.jsDir@ business? It's a configuration variable used to define the primary directory housing your JavaScript. It's defined in @tests/EnvJasmine/include/dependencies.js@ and defaults to a top-level directory of @js@. Change this if you're using a different scheme:
 
 bc. EnvJasmine.jsDir = EnvJasmine.rootDir + "/../../js";
 
