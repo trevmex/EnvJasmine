@@ -93,11 +93,11 @@ h3. 7. Load the necessary JavaScript into the test spec.
 
 Inside @tests/EnvJasmine/specs/add-numbers.spec.js@, let's load the file containing the code we're testing, in this case @js/add-numbers.js@. This can be done by adding the following line:
 
-bc. EnvJasmine.load(EnvJasmine.jsDir + "add-numbers.js");
+bc. EnvJasmine.load(EnvJasmine.jsDir + "/add-numbers.js");
 
 h3. 8. Configure your EnvJasmine.
 
-But what's this @EnvJasmine.jsDir@ business? It's a configuration variable used to define the primary directory housing your JavaScript. To define this variable, open @tests/EnvJasmine/include/dependencies.js@ and change line 6 to read:
+But what's this @EnvJasmine.jsDir@ business? It's a configuration variable used to define the primary directory housing your JavaScript. It's defined in @tests/EnvJasmine/include/dependencies.js@ and defaults to a top-level directory of @js@. Change this if you're using a different scheme:
 
 bc. EnvJasmine.jsDir = EnvJasmine.rootDir + "/../../js";
 
@@ -127,7 +127,7 @@ h3. 11. Run the test.
 
 Run the test from the command line:
 
-bc. ./tests/EnvJasmine/bin/run_test.sh tests/EnvJasmine/specs/add-numbers.spec.js
+bc. ./tests/EnvJasmine/bin/run_test.sh specs/add-numbers.spec.js
 
 Note that the above command will run just the @add-numbers.spec.js@ code. To run all tests:
 
@@ -147,7 +147,7 @@ h3. 13. Run the test again.
 
 Run the test again and confirm that it passes:
 
-bc. ./tests/EnvJasmine/bin/run_test.sh tests/EnvJasmine/specs/add-numbers.spec.js
+bc. ./tests/EnvJasmine/bin/run_test.sh specs/add-numbers.spec.js
 
 That's it! For more help on Jasmine docs at https://github.com/pivotal/jasmine/wiki
 
