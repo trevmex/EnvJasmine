@@ -71,11 +71,11 @@ h3. 4. Integrate EnvJasmine into the project.
 
 Clone EnvJasmine into your @tests@ directory:
 
-bc. git clone https://github.com/trevmex/EnvJasmine.git tests
+bc. git clone https://github.com/trevmex/EnvJasmine.git tests/EnvJasmine
 
 or
 
-bc. git clone git://github.com/trevmex/EnvJasmine.git tests
+bc. git clone git://github.com/trevmex/EnvJasmine.git tests/EnvJasmine
 
 h3. 5. Create a JavaScript file.
 
@@ -99,7 +99,14 @@ h3. 8. Configure your EnvJasmine.
 
 But what's this @EnvJasmine.jsDir@ business? It's a configuration variable used to define the primary directory housing your JavaScript. It's defined in @tests/EnvJasmine/include/dependencies.js@ and defaults to a top-level directory of @js@. Change this if you're using a different scheme:
 
+bc. mkdir -p tests/EnvJasmine/etc/conf
+bc. cp tests/EnvJasmine/include/dependencies.js tests/EnvJasmine/etc/conf/demo.conf.js
+
+And edit the following line:
+
 bc. EnvJasmine.jsDir = EnvJasmine.rootDir + "/../../js";
+
+in @tests/EnvJasmine/etc/conf/demo.conf.js@ with your favourite text editor.
 
 Please note the need for the leading slash.
 
@@ -127,11 +134,9 @@ h3. 11. Run the test.
 
 Run the test from the command line:
 
-bc. ./tests/EnvJasmine/bin/run_test.sh specs/add-numbers.spec.js
+bc. ./tests/EnvJasmine/bin/run_test.sh --configFile=</absolute/path/to/demo/tests/EnvJasmine/etc/conf/demo.conf.js> specs/add-numbers.spec.js
 
-Note that the above command will run just the @add-numbers.spec.js@ code. To run all tests:
-
-bc. ./tests/EnvJasmine/bin/run_all_tests.sh
+Note that the above command will run just the @add-numbers.spec.js@ code.
 
 Also note that at this stage, the test should fail as we have not yet written the @addNumbers()@ function.
 
@@ -147,7 +152,7 @@ h3. 13. Run the test again.
 
 Run the test again and confirm that it passes:
 
-bc. ./tests/EnvJasmine/bin/run_test.sh specs/add-numbers.spec.js
+bc. ./tests/EnvJasmine/bin/run_test.sh --configFile=</absolute/path/to/demo/tests/EnvJasmine/etc/conf/demo.conf.js> specs/add-numbers.spec.js
 
 That's it! For more help on Jasmine docs at https://github.com/pivotal/jasmine/wiki
 
