@@ -1,0 +1,20 @@
+<project>
+    <target name="test_js" xmlns:ac="antlib:net.sf.antcontrib">
+        <property name="js.test.env" value=""/><!-- must end with a '/' -->
+        <property name="js.test.spec_dir" value="specs"/>
+        <ac:for param="file">
+            <path>                
+                <fileset dir="${js.test.env}${js.test.spec_dir}" includes="*.js" />
+            </path>
+            <sequential>
+                <basename property="filename" file="@{file}" />
+                <java jar="lib/rhino/js.jar" fork="true">
+                    <arg value="${js.test.env}lib/envjasmine.js" />
+                    <arg value="--environment=UNIX" />
+                    <arg value="--rootDir=${js.test.env}"/>
+                    <arg value="${js.test.spec_dir}/${filename}"/>
+                </java>
+            </sequential>
+        </ac:for>
+    </target>
+</project>
