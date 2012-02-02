@@ -1,4 +1,4 @@
-h1. EnvJasmine: Jasmine test runner for EnvJS.
+h1. EnvJasmine: Jasmine test runner for EnvJS. !https://secure.travis-ci.org/trevmex/EnvJasmine.png!
 
 EnvJasmine allows you to run headless JavaScript tests.
 
