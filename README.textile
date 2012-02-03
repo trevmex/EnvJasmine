@@ -24,10 +24,6 @@ bc. bin/run_all_tests.bat
 
 bc. bin/run_test.bat specs/[your spec file].js
 
-To run all tests using ant, rename @ant-build-example.xml@ to @build.xml@ then run:
-
-bc. ant test_js
-
 h2. Adding Dependencies
 
 Sometimes you will have libraries that you need to load for any of your JavaScript files to work. To make sure these are loaded before your tests are run, include them in the @include/dependencies.js@ file using the @EnvJasmine.load("file.js");@ function.
