@@ -1,9 +1,9 @@
 // Sample demo
 
-if (!this.Demo) {
-    Demo = {};
+if (typeof(NS) === 'undefined' || !NS) {
+    var NS = {};
 }
 
-Demo.checkBirthdate = function (user) {
-    return !user.birthdate ? false : true;
-}
+NS.greeter = function (name) {
+    return 'Hello ' + name + '!';
+};
