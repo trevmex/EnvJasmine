@@ -6,4 +6,4 @@ puts "root: #{root}"
 cmd = "java -Duser.timezone='US/Eastern' -Dfile.encoding=utf-8 -jar '#{root}/lib/rhino/js.jar' '#{root}/lib/envjasmine.js' --environment='UNIX' --rootDir='#{root}' #{ARGV.join(' ')}"
 
 puts "cmd: #{cmd}"
-system(cmd)
+exit(system(cmd))
