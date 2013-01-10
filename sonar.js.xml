@@ -1,0 +1,21 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.project.my</groupId>
+  <artifactId>myproject</artifactId>
+  <version>1.0.0.0</version>
+  <name>My Project</name>
+  <description>
+    Example Project for EnvJasmine, JSCover, Sonar integration
+  </description>
+  <build>
+    <finalName>my-project</finalName>
+    <sourceDirectory>samples</sourceDirectory>
+  </build>
+  <properties>
+    <sonar.language>js</sonar.language>
+    <sonar.branch>javascript</sonar.branch>
+    <sonar.exclusions>ajaxDemo.js</sonar.exclusions>
+    <sonar.javascript.testframework>jstestdriver</sonar.javascript.testframework>
+    <sonar.javascript.jstestdriver.reportsfolder>reports</sonar.javascript.jstestdriver.reportsfolder>
+  </properties>
+</project>

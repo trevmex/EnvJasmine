@@ -155,6 +155,11 @@ Run the test again and confirm that it passes:
 
 bc. ./tests/EnvJasmine/bin/run_test.sh --configFile=</absolute/path/to/demo/tests/EnvJasmine/etc/conf/demo.conf.js> specs/add-numbers.spec.js
 
+
+h2. Code Coverage
+
+See @lib/jscover/README.textile@
+
 That's it! For more help on Jasmine docs at https://github.com/pivotal/jasmine/wiki
 
 Please contact Trevor Lalish-Menagh through github (https://github.com/trevmex) with any defects or feature requests!
