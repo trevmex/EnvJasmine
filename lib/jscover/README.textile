@@ -1,0 +1,142 @@
+h1. JSCover and Sonar integration for EnvJasmine (beta)
+
+Allows you to pull code coverage metrics for EnvJasmine tests and view the results in Sonar.
+
+h2. 3rd Party Tools
+
+JSCover is a code coverage tool for javascript. See http://tntim96.github.com/JSCover/
+
+Sonar is a free, open source, code quality analytics tool. See http://www.sonarsource.org/
+
+Sonar has a plugin to report on javascript quality metrics. See http://docs.codehaus.org/display/SONAR/JavaScript+Plugin
+
+Python. See http://www.python.org/
+
+Maven (included example) or Sonar Runner. See http://maven.apache.org/ or http://docs.codehaus.org/display/SONAR/Installing+and+Configuring+Sonar+Runner
+
+h2. Prerequisites
+
+This readme assumes: 
+
+you already familiar with Sonar,
+you are already the concept of code coverage,
+you have python installed,
+you have maven installed (only necessary for the out of the box example).
+
+h2. Running The example
+
+To calculate and report code coverage metrics to Sonar:
+
+Download and install Sonar.
+Install the Sonar javascript plugin.
+Run your local Sonar server.
+In @include/dependencies.js@, uncomment @EnvJasmine.loadGlobal(EnvJasmine.libDir + "/jscover/envjasmine-coverage.js");@
+Execute @bin/run_coverage.sh@
+Find the project in Sonar and add the code coverage widget to your dashboard.
+
+h2. How to configure for use in your project
+
+h3. dependencies.js
+
+In your @dependencies.js@ uncomment @EnvJasmine.loadGlobal(EnvJasmine.libDir + "/jscover/envjasmine-coverage.js");@ and update the @envjasmine-coverage.js@ path if necessary
+
+h3. envjasmine-coverage.js
+
+The first line of this file specifies the code coverage json output file. Change the directory of the path to your reporting folder. 
+
+h3. sonar.js.xml
+
+This must stay in the root directory.
+The "modelVersion" property must be compatible with your version of maven.
+"sourceDirectory" should be set to the root javascript directory.
+"sonar.exclusions" will exclude files from sonar analytics. "*" and "**" wildcards can be used.
+"sonar.javascript.testframework" must not be edited
+"sonar.javascript.jstestdriver.reportsfolder" should be set to your temp reports folder.
+All other properties are identifying labels and can be edited as long as no other process relies on them.
+
+h3. sonar.js.coverage.py
+
+Update the files and directories variables at the top of the file. Make sure all paths are absolute. (See comments in the files)
+
+h2. File overview
+
+@bin/run_coverage.sh@ is the main files which kick off the process.
+@include/dependencies.js@ loads EnvJasmine dependencies including the coverage plugin.
+@lib/envjasmine.js@ is the same EnvJasmine file you're been using to run your EnvJasmine tests.
+@lib/jscover/sonar.js.coverage.py@ is the main execution script called by run_coverage.
+@lib/jscover/envjasmine-coverage.js@ is the EnvJasmine coverage plugin. This adds itself to EnvJasmine's post test functions and writes the coverage data to disk.
+@lib/jscover/JSCover-all.jar@ is a copy of the JSCover jar.
+@samples/notCoveredDemo.js@ and @specs/notCoveredDemo.js@ are files that demo coverage gaps.
+@sonar.js.xml@ is the minimal pom file needed to get data into sonar. You could also use a sonar-runner.properties file. Unfortunately, this needs to be in the project root.
+
+h2. Detailed discussion of sonar.js.coverage.py
+
+There is no specific reason that this script needs to be in python. If you can't use python, porting this script should work fine.
+
+h3. Initialization
+
+This script file starts by setting up all of the variables at the top of the script and creating temp directories.
+
+h3. Instrumenting javascript code
+
+We need to create an instrumented copy of javascript code using JSCover. We pass in "no-instrument" args to tell jscover not instrument a file or directory and instead copy the original(s). This is good for ignoring vendor code, such as jquery which takes a long time to instrument and some vendor minified code breaks JSCover.
+
+h3. Exposing coverage data to EnvJasmine
+
+JSCover creates instrumented code that puts the output data into a local javascript variable. That variable is inaccessible to EnvJasmine. For now we're implementing a hack to find/replace the variable with an EnvJasmine scoped variable in the instrumented code files.
+
+h3. Run all EnvJasmine tests against the instrumented code
+
+Run the tests as normal against the instrumented code. Since the envjasmine-coverage plugin was included in @include/dependencies.js@ the plugin will write out the code coverage json data object to the reports directory.
+
+h3. Convert the json data to lcov format
+
+Sonar uses lcov format. JSCover has the ability to do this conversion.
+
+h3. Fix source code location in the lcov file
+
+For some reason, the source code root is set to the reports directory. Change this to the original source directory.
+
+h3. Remove branch data
+
+JSCover supports branch data. The Sonar javascript plugin doesn't. (It's on their roadmap.) For now we have to strip out branch data or sonar will break.
+
+h3. Run Sonar (using/ Maven)
+
+This example uses a minimal maven pom file (@sonar.js.xml@) to run sonar. This is a normal sonar run, and it picks up the file in the @sonar.javascript.jstestdriver.reportsfolder@ directory.
+
+You could convert this to a sonar-runner.properties file if desired.
+
+h3. Cleanup
+
+Deletes temp directories.
+
+h2. FAQ/Common Problems
+
+h3. Directory/Path problems
+
+It's really easy to be looking for the wrong file in the wrong place.  The important directories are the source directory, the instrumented directory, the reports directory, and the lib directory. If you're having trouble make sure the files are all being read and output in the correct places. Debug statements can be helpful if you've lost your wait setting this up.
+
+h3. Could not find jscoverage.json
+
+Exception in thread "main" java.lang.RuntimeException: Problem loading file: '/my/reports/directory/jscoverage.json'
+
+Make sure to uncomment @EnvJasmine.loadGlobal(EnvJasmine.libDir + "/jscover/envjasmine-coverage.js");@ in  @include/dependencies.js@
+
+h3. Everything looks like it's working correctly but Sonar is failing to include the coverage results.
+
+Check the final lcov file (@reports/jsTestDriver.conf-coverage.dat@). Each original javascript source file should be referenced by the correct absolute path. If the path is not correct, the "Fix source code location" step failed. You'll probably have to edit the find/replace commands in the python file to get this working.
+
+h3. What's with all the jsTestDriver references?
+
+The sonar javascript plugin has been designed to work with two different javascript testing frameworks. One of them is jsTestDriver. We have to select one in order for sonar to know that there's coverage data ready. But as long as the data output is the same, Sonar doesn't really care who made the output.
+
+h2. Roadmap
+
+Unify all values into the pom file. So you don't have to edit 4 files.
+Add a .bat file
+Create sonar-runner example
+Get rid of python dependency
+Add unit test success/failure metrics to sonar
+
+Please contact Daniel Freiman (https://github.com/DannyJF) or Trevor Lalish-Menagh (https://github.com/trevmex) through github with any defects or feature requests!
