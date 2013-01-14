@@ -163,3 +163,22 @@ See @lib/jscover/README.textile@
 That's it! For more help on Jasmine docs at https://github.com/pivotal/jasmine/wiki
 
 Please contact Trevor Lalish-Menagh through github (https://github.com/trevmex) with any defects or feature requests!
+
+h2. EnvJasmine as a Ruby gem
+
+EnvJasmine can also be compiled to a Ruby gem.
+
+h3. How to build and install the EnvJasmine gem
+
+    git clone git://github.com/trevmex/EnvJasmine.git
+    cd EnvJasmine
+    gem build EnvJasmine.gemspec
+    gem install EnvJasmine-1.7.1.gem
+
+h3. Using the EnvJasmine Ruby gem
+
+Note that, when used as a Ruby gem, EnvJasmine requires a few command line arguments be specified.
+
+Here is a Ruby usage example:
+
+    envjs_run_test --configFile='some_spec_helper.js' --testDir='specs' --rootDir='some_project'
