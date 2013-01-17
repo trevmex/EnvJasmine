@@ -17,4 +17,5 @@ EnvJasmine.loadGlobal(EnvJasmine.includeDir + "jquery-1.4.4.js"); // for example
 
 
 // this will include the code coverage plugin
-// EnvJasmine.loadGlobal(EnvJasmine.libDir + "/jscover/envjasmine-coverage.js");
+//EnvJasmine.loadGlobal(EnvJasmine.libDir + "/jscover/envjasmine-sonar-coverage-properties.js"); // TODO: Uncomment and update if you want code coverage
+//EnvJasmine.loadGlobal(EnvJasmine.coverage.envjasmine_coverage_js); // TODO: Uncomment if you want code coverage
