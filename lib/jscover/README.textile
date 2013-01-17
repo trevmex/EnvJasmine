@@ -10,9 +10,7 @@ Sonar is a free, open source, code quality analytics tool. See http://www.sonars
 
 Sonar has a plugin to report on javascript quality metrics. See http://docs.codehaus.org/display/SONAR/JavaScript+Plugin
 
-Python. See http://www.python.org/
-
-Maven (included example) or Sonar Runner. See http://maven.apache.org/ or http://docs.codehaus.org/display/SONAR/Installing+and+Configuring+Sonar+Runner
+Maven (included example) or Sonar Runner (default example). See http://maven.apache.org/ or http://docs.codehaus.org/display/SONAR/Installing+and+Configuring+Sonar+Runner
 
 h2. Prerequisites
 
@@ -20,8 +18,7 @@ This readme assumes:
 
 you already familiar with Sonar,
 you are already the concept of code coverage,
-you have python installed,
-you have maven installed (only necessary for the out of the box example).
+you have maven or Sonar Runner installed (depending on which example you plan to run)
 
 h2. Running The example
 
@@ -46,7 +43,7 @@ At the top of the file, set @properties_file@ to the properties file location.
 
 h3. envjasmine-sonar-coverage-properties.js
 
-Update all of the variables in this file to the correct location.
+Update all of the variables in this file to the correct location or value
 
 h3. sonar.js.xml
 
@@ -137,7 +134,6 @@ Yes it would. The prototypes were actually written in ruby and python, but I tho
 
 h2. Roadmap
 
-Create sonar-runner example
 Add unit test success/failure metrics to sonar
 Add a .bat file
 Un-remove branch coverage (blocked by lack of sonar-javascript plugin support)
@@ -146,7 +142,7 @@ Remove "data cleaning" when writing out coverage results (will require help jsco
 h2. Release Notes
 
 versions 0.9: initial release. 1/11/2013
-versions 1.0: Removed python dependency. Simplified configuration. 1/17/2013
+versions 1.0: Removed python dependency. Simplified configuration. Made sonar-runner the default sonar method. 1/17/2013
   
 
 Please contact Daniel Freiman (https://github.com/DannyJF) or Trevor Lalish-Menagh (https://github.com/trevmex) through github with any defects or feature requests!
