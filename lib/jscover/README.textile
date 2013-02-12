@@ -24,11 +24,13 @@ h2. Running The example
 
 To calculate and report code coverage metrics to Sonar:
 
-Download and install Sonar.
+Install Sonar.
+Install Sonar-Runner.
 Install the Sonar javascript plugin.
 Run your local Sonar server.
-In @include/dependencies.js@, uncomment @EnvJasmine.loadGlobal(EnvJasmine.libDir + "/jscover/envjasmine-coverage.js");@
-Execute @bin/run_coverage.sh@
+In @include/dependencies.js@, uncomment @EnvJasmine.loadGlobal(EnvJasmine.libDir + "/jscover/envjasmine-sonar-coverage-properties.js");@
+In @include/dependencies.js@, uncomment @EnvJasmine.loadGlobal(EnvJasmine.coverage.envjasmine_coverage_js);@
+Execute @bin/run_coverage.sh --sonarMethod=sonar-runner@
 Find the project in Sonar and add the code coverage widget to your dashboard.
 
 h2. How to configure for use in your project
@@ -37,15 +39,18 @@ h3. dependencies.js
 
 In your @dependencies.js@ uncomment the 2 lines loading the coverage properties file and the coverage plugin.
 
-h3. envjasmine-coverage.js
+h3. command line options
 
-At the top of the file, set @properties_file@ to the properties file location.
+projectRoot - the root folder of your project.
+originalDir - the root folder of your javascript.
+instrumentedDir - the folder you want your javascript copied to.
+reportsDir - the output directory for sonar reports.
+sonarMethod - "sonar-runner" or "maven" depending on which method you use. Or "none" if you are going to run sonar manually.
+noInstrument - files you want excluded from instrumentation (such as jquery). This can be set multiple times. This path is relative to the originalDir.
+debug - will output extra information to the console.
+cleanup - will delete the reports and instrumentation directory after completion.
 
-h3. envjasmine-sonar-coverage-properties.js
-
-Update all of the variables in this file to the correct location or value
-
-h3. sonar.js.xml
+h3. sonar.js.xml (if you use maven)
 
 This must stay in the root directory.
 The "modelVersion" property must be compatible with your version of maven.
@@ -54,6 +59,10 @@ The "modelVersion" property must be compatible with your version of maven.
 "sonar.javascript.testframework" must not be edited
 "sonar.javascript.jstestdriver.reportsfolder" should be set to your temp reports folder.
 All other properties are identifying labels and can be edited as long as no other process relies on them.
+
+h3. sonar-project.properties (if you use sonar-runner)
+
+Check out the documentation at http://docs.codehaus.org/display/SONAR/Installing+and+Configuring+Sonar+Runner
 
 h2. File overview
 
@@ -66,13 +75,14 @@ h2. File overview
 @lib/jscover/envjasmine-coverage.js@ is the EnvJasmine coverage plugin. This adds itself to EnvJasmine's post test functions and writes the coverage data to disk.
 @lib/jscover/JSCover-all.jar@ is a copy of the JSCover jar.
 @samples/notCoveredDemo.js@ and @specs/notCoveredDemo.js@ are files that demo coverage gaps.
-@sonar.js.xml@ is the minimal pom file needed to get data into sonar. You could also use a sonar-runner.properties file. Unfortunately, this needs to be in the project root.
+@sonar.js.xml@ is the minimal pom file needed to get data into sonar if you use maven. Unfortunately, this needs to be in the project root.
+@sonar-project.properties@ is the config file for sonar-runner.
 
 h2. Detailed discussion of envjasmine-sonar-coverage-runner.js
 
 h3. Initialization
 
-This script file starts by loading it's dependencies including properties and helper functions. It also create temp directories.
+This script file starts by reading the command line arguments and loading it's dependencies including properties and helper functions. It also create temp directories.
 
 h3. Instrumenting javascript code
 
@@ -98,11 +108,9 @@ h3. Remove branch data
 
 JSCover supports branch data. The Sonar javascript plugin doesn't. (It's on their roadmap.) For now we have to strip out branch data or sonar will break.
 
-h3. Run Sonar (using/ Maven)
+h3. Run Sonar
 
-This example uses a minimal maven pom file (@sonar.js.xml@) to run sonar. This is a normal sonar run, and it picks up the file in the @sonar.javascript.jstestdriver.reportsfolder@ directory.
-
-You could convert this to a sonar-runner.properties file if desired.
+Runs sonar against the reports directory
 
 h3. Cleanup
 
@@ -118,11 +126,11 @@ h3. Could not find jscoverage.json
 
 Exception in thread "main" java.lang.RuntimeException: Problem loading file: '/my/reports/directory/jscoverage.json'
 
-Make sure to uncomment @EnvJasmine.loadGlobal(EnvJasmine.libDir + "/jscover/envjasmine-coverage.js");@ in  @include/dependencies.js@
+Make sure to uncomment the necessary lines in the dependencies.js files.
 
 h3. Everything looks like it's working correctly but Sonar is failing to include the coverage results.
 
-Check the final lcov file (@reports/jsTestDriver.conf-coverage.dat@). Each original javascript source file should be referenced by the correct absolute path. If the path is not correct, the "Fix source code location" step failed. You'll probably have to edit the find/replace commands in the python file to get this working.
+Check the final lcov file (@reports/jsTestDriver.conf-coverage.dat@). Each original javascript source file should be referenced by the correct absolute path. If the path is not correct, the "Fix source code location" step failed. Double check that your directories have trailing slashes EXCEPT for the reports directory which can't have a trailing slash.
 
 h3. What's with all the jsTestDriver references?
 
@@ -141,8 +149,9 @@ Remove "data cleaning" when writing out coverage results (will require help jsco
 
 h2. Release Notes
 
-versions 0.9: initial release. 1/11/2013
-versions 1.0: Removed python dependency. Simplified configuration. Made sonar-runner the default sonar method. 1/17/2013
+version beta: initial release. 1/11/2013
+version 1.7.1: Removed python dependency. Simplified configuration. Made sonar-runner the default sonar method. 1/17/2013
+version 1.7.2: Now works as ruby gem. Made many properties configurable from command line. There is no longer a default sonar method. 2/12/2013
   
 
 Please contact Daniel Freiman (https://github.com/DannyJF) or Trevor Lalish-Menagh (https://github.com/trevmex) through github with any defects or feature requests!
