@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+root = File.join(File.dirname(__FILE__), "..")
+puts "root: #{root}"
+
+cmd = "java -Duser.timezone='US/Eastern' -Dfile.encoding=utf-8 -jar '#{root}/lib/rhino/js.jar' '#{root}/lib/jscover/envjasmine-sonar-coverage-runner.js' --environment='UNIX' --rootDir='#{root}' #{ARGV.join(' ')}"
+
+puts "cmd: #{cmd}"
+exit(system(cmd))
