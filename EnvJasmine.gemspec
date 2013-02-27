@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.description = "EnvJasmine allows you to run headless JavaScript tests."
   s.summary = "EnvJasmine"
   s.email = "github@trevreport.org"
-  s.executables = ['envjs_run_test','run_coverage.sh','run_all_tests.sh','run_test.sh']
+  s.executables = ['envjs_run_test','envjs_run_coverage','run_coverage.sh','run_all_tests.sh','run_test.sh']
   s.homepage = 'https://github.com/trevmex/envjasmine'
   s.files = ['lib/envjasmine.html',
 			'lib/envjasmine.js',
