@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "EnvJasmine"
-  s.version = "1.7.4"
+  s.version = "1.7.5"
 
   s.authors = ["Trevor Menagh"]
   s.date = "2012-12-13"
