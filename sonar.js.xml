@@ -15,7 +15,9 @@
     <sonar.language>js</sonar.language>
     <sonar.branch>javascript</sonar.branch>
     <sonar.exclusions>ajaxDemo.js</sonar.exclusions>
-    <sonar.javascript.testframework>jstestdriver</sonar.javascript.testframework>
-    <sonar.javascript.jstestdriver.reportsfolder>reports</sonar.javascript.jstestdriver.reportsfolder>
+    <sonar.javascript.jstestdriver.reportsPath>reports</sonar.javascript.jstestdriver.reportsPath>
+    <sonar.javascript.lcov.reportPath>reports/jsTestDriver.conf-coverage.dat</sonar.javascript.lcov.reportPath>
+    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+
   </properties>
 </project>
