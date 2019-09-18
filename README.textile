@@ -35,7 +35,7 @@ h2. Based on info from:
     * "JavaScript BDD, with Jasmine, without a browser":http://www.build-doctor.com/2010/12/08/javascript-bdd-jasmine/
     * "Rhino":http://www.mozilla.org/rhino/
     * "EnvJS":http://www.envjs.com/
-    * "Jasmine":http://pivotal.github.com/jasmine/
+    * "Jasmine":https://jasmine.github.io/
     * "Jasmine Jquery":https://github.com/velesin/jasmine-jquery
 
 Originally created by Jeff Avallone and Trevor Lalish-Menagh. See "LICENSE":https://github.com/trevmex/EnvJasmine/blob/master/LICENSE for lincensing information.
@@ -123,7 +123,7 @@ bc. describe("addNumbers", function () {
 
 h3. 10. Write the code testing outlining expected behavior of a unit of JavaScript.
 
-Utilizing Jasmine "syntax":https://github.com/pivotal/jasmine/wiki and "matchers":https://github.com/pivotal/jasmine/wiki/Matchers, write the code testing the expected behavior of @addNumbers()@:
+Utilizing Jasmine "syntax":https://github.com/jasmine/jasmine/wiki and "matchers":https://github.com/pivotal/jasmine/wiki/Matchers, write the code testing the expected behavior of @addNumbers()@:
 
 bc. describe("addNumbers", function () {
     it("returns the sum of the two integers it's passed", function() {
@@ -180,7 +180,7 @@ Here is a Ruby usage example:
 
     envjs_run_test --configFile='some_spec_helper.js' --testDir='specs' --rootDir='some_project'
 
-That's it! For more help on Jasmine docs at https://github.com/pivotal/jasmine/wiki
+That's it! For more help on Jasmine docs at https://github.com/jasmine/jasmine/wiki
 
 Please contact Trevor Lalish-Menagh through github (https://github.com/trevmex) with any defects or feature requests!
 
